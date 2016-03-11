@@ -60,3 +60,24 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+# coala
+*.orig
+
+# pyenv
+.python-version
+
+# NodeJS
+node_modules
+npm-debug.log
+
+# Bower
+bower_components
+
+# Ruby
+Gemfile.lock
+/.bundle
+
+# GO
+Goopfile.lock
+/.vendor
