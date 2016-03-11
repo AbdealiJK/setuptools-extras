@@ -1,0 +1,20 @@
+[Default]
+files = setuptools_extras/**/*.py, tests/**/*.py
+
+max_line_length = 79
+use_spaces = True
+
+[python]
+bears = SpaceConsistencyBear, PyUnusedCodeBear
+
+default_actions =
+    SpaceConsistencyBear: ApplyPatchAction,
+    PyUnusedCodeBear: ApplyPatchAction
+
+[autopep8]
+bears = PEP8Bear
+
+default_actions = PEP8Bear: ApplyPatchAction
+
+[commit]
+bears = GitCommitBear
