@@ -1,3 +1,7 @@
+import sys
+
+from setuptools_extras.misc.utilities import popen
+
 
 class Package:
     """
@@ -19,6 +23,13 @@ class PackageManager:
     def __init__(self, name):
         self._name = name
 
+    def package_to_cli(self, package):
+        """
+        Convert the package into a string that can be used to identify it in
+        the CLI.
+        """
+        raise NotImplementedError
+
     def install_command(self, packages):
         """
         Create the installation command that can be run to install packages.
@@ -35,7 +46,11 @@ class PackageManager:
         """
         Install the given packages using the package manager.
         """
-        raise NotImplementedError
+        with popen(self.install_command(packages),
+                   stdout=sys.stdout,
+                   stderr=sys.stderr) as process:
+            process.wait()
+            return process.exitcode
 
     def check_install(self, package):
         """
